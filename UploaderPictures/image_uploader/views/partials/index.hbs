@@ -1,0 +1,57 @@
+{{!--section--}}
+<section class="serction my-4">
+<div class="container">
+    <div class="title">
+        <h1>Node File Uploader</h1>
+        <p class="subtitle">Upload images on the <strong>Server</strong></p>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-4">
+        <form action="/uploadmultiple" enctype="multipart/form-data" method="POST">
+           <div class="row">
+               <div class="col-8">
+                   <input type="file" class="form-control" name="images" id="formFile" multiple>
+                    <div class="tekst">
+                   <input type="text" class="form-control" name="nazivJela" id="formFile" >
+                   <input type="text" class="form-control" name="opisJela" id="formFile" >
+                   </div>
+                   <div class="col-2">
+                       <input type="submit" class="btn btn-warning" value="Upload Images">
+                   </div>
+               </div>
+           </div>
+        </form>
+    </div>
+    {{!--display Images--}}
+        <section class="mt-5">
+            <div class="row">
+                
+                    {{#each images}}
+                     {{#each this}}
+                       {{#if imageBase64}}
+                          {{!--bootstrapcards--}}
+                              <div class="col-3">
+                                <div class="card shadow" style="width: 18rem;">
+                        <img src='data:{{contentType}};base64,{{imageBase64}}'class="card-img-top" alt="...">
+                        <div class="card-body">
+                            
+                          <h5 class="card-title">{{nazivJela}}</h5>
+                           <p class="card-text">{{opisJela}}</p>
+                           <a href="#" class="btn btn-primary">Go Somewhere</a>
+                        </div>
+                              </div>
+                              </div>
+                          {{!--/bootstrapcards--}}
+                       {{/if}}
+                     {{/each}}
+                    {{/each}}
+                    
+                
+            </div>
+        </section>
+
+    {{!--display Images--}}
+</div>
+</section>
+{{!--section--}}
